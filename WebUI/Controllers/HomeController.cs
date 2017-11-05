@@ -13,6 +13,7 @@ namespace WebUI.Controllers
         public IActionResult Index()
         {
             return View();
+            //return "Hello world";
         }
 
         public IActionResult About()

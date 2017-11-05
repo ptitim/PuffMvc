@@ -1,5 +1,7 @@
 ﻿@using WebUI.Views.Manage
-@inject SignInManager<ApplicationUser> SignInManager
+@using DataAccess.Entity
+
+@inject SignInManager<User> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
