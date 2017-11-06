@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using WebUI.Models;
 using WebUI.Models.AccountViewModels;
 using WebUI.Services;
-using DataAccess.Entity;
+using  DataAccess.Entity;
 
 namespace WebUI.Controllers
 {
