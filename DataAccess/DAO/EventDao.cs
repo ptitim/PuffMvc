@@ -121,8 +121,6 @@ namespace DataAccess.DAO
             context.Events.Add(entity);
         }
 
-        #endregion
-
         /// <summary>
         /// Delete event
         /// </summary>
@@ -132,11 +130,18 @@ namespace DataAccess.DAO
             context.Events.Remove(entity);
         }
 
+        /// <summary>
+        /// Delete event if found in database
+        /// </summary>
+        /// <param name="id"></param>
         public void DeleteEvent(int id)
         {
             var entity = context.Events.Find(id);
             if(entity != null)
                 context.Events.Remove(entity);
         }
+        #endregion
+
+
     }
 }
