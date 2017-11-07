@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using DataAccess.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace DataAccess
 {

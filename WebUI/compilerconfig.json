@@ -1,0 +1,6 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/variables.css",
+    "inputFile": "wwwroot/sass/variables.scss"
+  }
+]

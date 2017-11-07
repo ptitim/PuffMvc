@@ -4,20 +4,11 @@ namespace Common
 {
     public class Common
     {
-        
-        #region Roles
-        public const string Admin = "Amdin" ;
+        #region displayed data
 
-        public const string BaseUser = "BaseUser";
-        
+        const string SiteTitle = "Puff";
 
         #endregion
 
-        #region Cryptos
-
-        public const string Salt = "ProjectPuff";
-
-
-        #endregion
     }
 }

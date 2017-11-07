@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataAccess.Entity;
-using Google.Protobuf.WellKnownTypes;
 
 namespace Service.DTO
 {
