@@ -12,7 +12,7 @@ namespace DataAccess.Entity
         public string Street { get; set; }
 
         [MaxLength(10)]
-        public int Number { get; set; }
+        public int? Number { get; set; }
         
         [MaxLength(256)]
         public string PostalCode { get; set; }

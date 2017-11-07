@@ -10,9 +10,9 @@ namespace Service.DTO
 
         public string Name { get; private set; }
         
-        public DateTime ReleaseDate { get; private set; }
+        public DateTime? ReleaseDate { get; private set; }
         
-        public TimeSpan TimeLength { get; private set; } 
+        public TimeSpan? TimeLength { get; private set; } 
         
         public int PG { get; private set; }
         
