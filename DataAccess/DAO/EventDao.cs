@@ -107,6 +107,11 @@ namespace DataAccess.DAO
             return context.Events.Find(id);
         }
 
+        public IEnumerable<Event> GetEventsByMovies(List<string> movies)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
 

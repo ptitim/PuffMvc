@@ -99,10 +99,15 @@ namespace Service
             return eventDto;
         }
 
+        public List<EventListDto> GetListEventsByMovies(List<string> movies)
+        {
+
+        }
+
         #endregion
 
         #region Methods Set
-        
+
         /// <summary>
         /// Save event modification
         /// Create a new one if none is found
@@ -207,6 +212,8 @@ namespace Service
                 tr.AddErrorWithCode(HttpStatusCode.NotFound, "Event has not been found");
             }
         }
+
+
 
         #endregion
 

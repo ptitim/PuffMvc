@@ -1,6 +1,17 @@
-﻿@{
+﻿@model List< Service.DTO.EventListDto>;
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+
+
+@foreach(var eventLine in Model)
+{
+    @Html.DisplayFor(model => eventLine)
+}
+
+
 
 @*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">

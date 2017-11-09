@@ -1,0 +1,46 @@
+﻿@model Service.DTO.EventListDto
+
+<div class="row">
+    <h3 class="home-city-title">
+        @Html.Display(Model.City)
+    </h3>
+</div>
+<div class="row">
+    <div class="col-xs-6 col-sm-4">
+        @foreach (var event_ in Model.Events)
+        {
+            <div class="home-event-container row">
+                
+                <div class="col-xs-12 col-sm-12 home-event-name">
+                    <p>@event_.Name</p>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    @Html.DisplayNameFor(model => event_.Date)
+                </div>
+
+                <div class="col-xs-offset-1 col-xs-11 col-sm-offset-0 col-sm-9">
+                    @Html.DisplayFor(model => event_.Date)
+                </div>
+
+                <div class="col-xs-12 col-sm-12">
+                    <p class="property-title">@Html.DisplayNameFor(model => event_.NumberMaxOfParticipant)</p>
+                </div>
+
+                <div class="col-xs-12">
+                    @string.Format("{0} / {1}", event_.NumberMaxOfParticipant)
+                </div>
+
+                <div class="col-xs-12">
+                    <p class="property-title">@Html.DisplayNameFor(model => event_.Resume)</p>
+                </div>
+
+                <div class="col-xs-offset-1 col-xs-11">
+                    @event_.Resume
+                </div>
+                
+            </div>
+
+        }
+    </div>
+</div>
