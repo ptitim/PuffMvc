@@ -1,10 +1,7 @@
-﻿[
-  {
-    "outputFile": "wwwroot/css/variables.css",
-    "inputFile": "wwwroot/sass/variables.scss"
-  },
+[
   {
     "outputFile": "wwwroot/css/header.css",
-    "inputFile": "wwwroot/sass/header.scss"
+    "inputFile": "wwwroot/sass/header.scss",
+    "sourceMap": false
   }
 ]

@@ -109,7 +109,9 @@ namespace DataAccess.DAO
 
         public IEnumerable<Event> GetEventsByMovies(List<string> movies)
         {
-            throw new NotImplementedException();
+            var test = this.context.Events.Where(ev => ev.Seances.Any(sc => movies.Contains(sc.Seance.Movie.Name)  ))  ;
+
+            return test;
         }
 
         #endregion

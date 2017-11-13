@@ -21,9 +21,10 @@ namespace WebUI.Controllers
 
         public IActionResult Index()
         {
-            var model = eventService.
+            List<string> movies = new List<string>() { "Thor", "test" };
+            var model = eventService.GetListEventsByMovies(movies);
 
-            return View();
+            return View(model);
             //return "Hello world";
         }
 

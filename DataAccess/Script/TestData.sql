@@ -1,6 +1,7 @@
 ﻿
 --Adresses
-SET IDENTITY_INSERT [Adresses] ON
+SET IDENTITY_INSERT [Adresses] ON 
+GO
 MERGE INTO [Adresses] AS TARGET
 USING (VALUES
 	(1, 'Lyon', 'France', 79, '69003', 'Rue de la république'),
@@ -17,6 +18,7 @@ GO
 
 
 SET IDENTITY_INSERT [Cinemas] ON
+GO
 MERGE INTO [Cinemas] AS TARGET
 USING (VALUES
 	(1, 1, 'Pathé', 'Bellcour'),
@@ -31,11 +33,13 @@ SET IDENTITY_INSERT [Cinemas] OFF
 GO
 
 SET IDENTITY_INSERT [Movies] ON
+GO
+
 MERGE INTO [Movies] AS TARGET
 USING (VALUES
-	(1, 'Thor : Ragnarok', 0, 'Taika waititi', '25/10/2017', '02.10.00'),
-	(2, 'Carbonne', 0, 'Olivier Marchal', '19/18/2017', '01:44:00'),
-	(3, 'Geostorm', 0, 'Dean Delvin', '11/10/2017', '01:47:00')
+	(1, 'Thor : Ragnarok', 0, 'Taika waititi', '2017/10/17', CAST ('0001/01/01 02:10:00' AS TIME(7))),
+	(2, 'Carbonne', 0, 'Olivier Marchal', '2017/18/19', CAST( '0001/01/01 01:44:00' AS TIME(7) )),
+	(3, 'Geostorm', 0, 'Dean Delvin', '2017/10/11', CAST( '0001/01/01 01:47:00' AS TIME(7)))
 	)
 AS Source ([Id], [Name], [PG], [Real], [ReleaseDate], [TimeLength])
 ON TARGET.[Id] = Source.[Id]

@@ -85,24 +85,45 @@ namespace Service
                 tr.AddFatalErrorWithCode(HttpStatusCode.BadRequest);
                 return null;
             }
-            
+
             var foundEvent = _eventDao.GetEventById(id.Value);
             if (foundEvent == null)
             {
                 tr.AddErrorWithCode(HttpStatusCode.NotFound);
                 return null;
             }
-            
+
             var eventDto = EventDto.Extract(foundEvent);
             tr.AddObject(eventDto);
-            
+
             return eventDto;
         }
 
         public List<EventListDto> GetListEventsByMovies(List<string> movies)
         {
+            var entities = this._eventDao.GetEventsByMovies(movies);
 
+            var test = new List<Tuple<string, List<Event>>>();
+
+            foreach (var movie in movies)
+            {
+                var bloup = entities.Where(en => en.Seances.Any(sc => sc.Seance.Movie.Name.Contains(movie))).ToList();
+                test.Add(Tuple.Create(movie, bloup));
+            }
+
+            List<EventListDto> dtos = new List<EventListDto>();
+
+            if (entities != null)
+            {
+                foreach(var liste in test)
+                {
+                    dtos.Add(EventListDto.Extract(liste.Item2, liste.Item1));
+                }
+            }
+
+            return dtos;
         }
+
 
         #endregion
 
@@ -123,23 +144,23 @@ namespace Service
                 tr.AddErrorWithCode(HttpStatusCode.BadRequest);
                 return null;
             }
-            
-             var evvent = _eventDao.GetEventById(dto.Id);
-            
+
+            var evvent = _eventDao.GetEventById(dto.Id);
+
             var newEvent = EventDto.Populate(dto, evvent);
-            
+
             // Check if event is new
-            if(evvent == null)
+            if (evvent == null)
                 _eventDao.AddEvent(newEvent);
-            
+
             _eventDao.SaveChanges();
-            
+
             dto = EventDto.Extract(newEvent);
             tr.AddObject(dto);
 
             return dto;
         }
-        
+
         /// <summary>
         /// Delete event
         /// </summary>
@@ -149,7 +170,7 @@ namespace Service
         {
             tr = new Treatment();
             Event entity = null;
-            
+
             // Get event
             try
             {
@@ -182,14 +203,14 @@ namespace Service
         public void UpdateEvent(EventDto dto, out Treatment tr)
         {
             tr = new Treatment();
-            
+
             Event entity;
-            
+
             try
             {
                 entity = _eventDao.GetEventById(dto.Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 tr.AddErrorWithCode(HttpStatusCode.NotFound, ex.ToString());
                 return;
