@@ -28,6 +28,7 @@ namespace DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMySql("server=localhost;userid=root;database=puffy;Convert Zero Datetime=True");
+            optionsBuilder.UseSqlServer("Server=localhost ;Database=Puff;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

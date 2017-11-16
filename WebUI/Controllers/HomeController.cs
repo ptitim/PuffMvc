@@ -16,7 +16,7 @@ namespace WebUI.Controllers
 
         public HomeController(IEventService eventService)
         {
-
+            this.eventService = eventService;
         }
 
         public IActionResult Index()

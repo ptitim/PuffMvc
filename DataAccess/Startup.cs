@@ -27,7 +27,7 @@ namespace DataAccess
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PuffContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer("Server = localhost ; Database = Puff; Trusted_Connection = True; MultipleActiveResultSets = true"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
