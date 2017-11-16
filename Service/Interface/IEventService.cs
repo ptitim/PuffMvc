@@ -42,6 +42,9 @@ namespace Service
         /// </returns>
         List<EventListDto> GetListEventsByMovies(List<string> movies);
 
+
+        void fakeEvent();
+
         #endregion
 
 

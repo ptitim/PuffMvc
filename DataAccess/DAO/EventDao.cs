@@ -109,11 +109,23 @@ namespace DataAccess.DAO
 
         public IEnumerable<Event> GetEventsByMovies(List<string> movies)
         {
-            var test = this.context.Events.Where(ev => ev.Seances.Any(sc => movies.Contains(sc.Seance.Movie.Name)  ))  ;
 
-            return test;
+            var test = this.context.Events.Include(ev => ev.Seances)
+                                                .ThenInclude(sc => sc.Seance)
+                                                    .ThenInclude(sc => sc.Movie)
+                                            .Include(ev => ev.Creator)
+                                            .ToList();
+
+            var events = test.Where(ev => ev.Seances.Any(sc => movies.Any(mv => sc.Seance.Movie.Name.Contains(mv))));
+            //var events = this.context.Events.Where(ev => ev.Seances.Any(sc => movies.Contains(sc.Seance.Movie.Name)  ))  6
+ 
+            return events;
         }
 
+        public IEnumerable<Event> GetEventBySeance(IEnumerable<int> scs)
+        {
+            return null;
+        }
         #endregion
 
 

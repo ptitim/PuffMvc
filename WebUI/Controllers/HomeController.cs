@@ -25,7 +25,6 @@ namespace WebUI.Controllers
             var model = eventService.GetListEventsByMovies(movies);
 
             return View(model);
-            //return "Hello world";
         }
 
         public IActionResult About()

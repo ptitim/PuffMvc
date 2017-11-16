@@ -4,11 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service;
 
 namespace WebUI.Controllers
 {
     public class EventController : Controller
     {
+
+        private IEventService eventService;
+
+        public EventController(IEventService evService)
+        {
+            eventService = evService;
+        }
+
         // GET: Event
         public ActionResult Index()
         {

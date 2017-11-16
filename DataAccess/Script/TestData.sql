@@ -70,7 +70,8 @@ GO
 SET IDENTITY_INSERT [Events] ON
 MERGE INTO [Events] AS TARGET
 USING (VALUES
-	(1, 'name', 1, '2017/12/01', true, 0 ) 
+	(1, 'name', '936ed9d6-32e6-4f92-9a5e-e7ef8929da71', '2017/12/01', 'true' , 0 ),
+	(2, 'Event de dimanche', '936ed9d6-32e6-4f92-9a5e-e7ef8929da71', '2017/11/26', 'true', 0)
 	)
 AS Source([Id], [Name], [CreatorId], [Date],[IsPublished], [NbMaxOfParticipant])
 ON TARGET.[Id] = Source.[Id]
@@ -81,4 +82,3 @@ GO
 
 SET IDENTITY_INSERT [Events] OFF
 GO
-

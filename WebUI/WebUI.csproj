@@ -8,6 +8,7 @@
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <Configurations>Debug;Release;Local</Configurations>
+    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
   </PropertyGroup>
 
 

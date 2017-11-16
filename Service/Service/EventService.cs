@@ -15,6 +15,11 @@ namespace Service
 
         private EventDao _eventDao;
 
+        private UserDao _userDao;
+
+        private SeanceDao _seanceDao;
+
+        private MovieDao _movieDao;
         #endregion
 
         #region Ctor
@@ -22,6 +27,12 @@ namespace Service
         public EventService()
         {
             _eventDao = new EventDao();
+            _userDao = new UserDao();
+
+            _seanceDao = new SeanceDao();
+            _movieDao = new MovieDao();
+                
+
         }
 
         #endregion
@@ -103,6 +114,11 @@ namespace Service
         {
             var entities = this._eventDao.GetEventsByMovies(movies);
 
+            var moviesIds = this._movieDao.GetMovieIdByTitle(movies);
+
+            var seances = this._seanceDao.GetSeancesByMovies(moviesIds);
+
+
             var test = new List<Tuple<string, List<Event>>>();
 
             foreach (var movie in movies)
@@ -122,6 +138,22 @@ namespace Service
             }
 
             return dtos;
+        }
+
+        public void fakeEvent()
+        {
+            User user = this._userDao.GetUserByMail("test@test.fr");
+
+            List<int> list = new List<int>() { 1 };
+            Seance sc = this._seanceDao.GetSeancesByMovies(list).FirstOrDefault();
+
+            var ev = new Event();
+            ev.Creator = user;
+            ev.Date = DateTime.UtcNow;
+            ev.IsPublished = true;
+            ev.NbMaxOfParticipant = 0;
+
+
         }
 
 

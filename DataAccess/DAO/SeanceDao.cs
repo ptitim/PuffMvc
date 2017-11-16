@@ -21,7 +21,7 @@ namespace DataAccess.DAO
 
         public IEnumerable<Seance> GetSeancesByMovies(List<int> moviesIds)
         {
-            throw new NotImplementedException();
+            return this.context.Seances.Where(sc => moviesIds.Any(mv => sc.Movie.Id == mv));
         }
     }
 }

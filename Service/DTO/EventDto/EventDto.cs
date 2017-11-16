@@ -12,16 +12,17 @@ namespace Service.DTO
 
         public int Id { get; set; }
 
-        [Display(Name="Name")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
 
-        [Display(Name="Resumer")]
+        [Display(Name = "ResumeTitle", ResourceType = typeof(Common.Resources.EventResources))]
         public string Resume { get; set; }
 
+        [Display(Name = "NumberOfParticipantTItle", ResourceType = typeof(Common.Resources.EventResources))]
         public int NumberMaxOfParticipant { get; set; }
 
         public string RendezVousPoint { get; set; }
@@ -31,6 +32,8 @@ namespace Service.DTO
         public string IdCreator { get; set; }
 
         public List<SeanceDto> Seance { get; set; }
+
+        public int NumberOfParticipant { get; set; }
 
         #endregion
 
@@ -72,7 +75,9 @@ namespace Service.DTO
 
             dto.NumberMaxOfParticipant = entity.NbMaxOfParticipant;
             dto.RendezVousPoint = entity.RendezVousPoint;
-//            dto.IdCreator = entity.IdCreator;
+
+            dto.NumberOfParticipant = entity.Participants.Count;
+            //            dto.IdCreator = entity.IdCreator;
 
             dto.Seance = SeanceDto.Extract(entity.Seances);
 
@@ -84,7 +89,7 @@ namespace Service.DTO
             // create new event if none exists
             if (entity == null)
                 entity = new Event();
-            
+
             // Populate data
             if (!string.IsNullOrEmpty(dto.Name))
                 entity.Name = dto.Name;
@@ -109,7 +114,7 @@ namespace Service.DTO
 
             if (dto.IdCreator != null)
                 entity.Creator = creator;
-            
+
             if (dto.Seance != null && dto.Seance.Any())
             {
                 foreach (var seanceDto in dto.Seance)
@@ -121,7 +126,7 @@ namespace Service.DTO
                     }
                     else
                     {
-                        tmp = new SeanceEvent() {EventId = dto.Id, Seance = SeanceDto.Populate(seanceDto)};
+                        tmp = new SeanceEvent() { EventId = dto.Id, Seance = SeanceDto.Populate(seanceDto) };
                     }
                 }
             }
