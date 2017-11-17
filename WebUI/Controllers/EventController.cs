@@ -27,7 +27,15 @@ namespace WebUI.Controllers
         // GET: Event/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = this.eventService.GetEventById(id, out Treatment tr);
+
+            if (tr.IsSuccess())
+            {
+                return View(model);
+            }
+
+            // if we get here, there was a problem
+            return RedirectToAction("Home", "Index");
         }
 
         // GET: Event/Create

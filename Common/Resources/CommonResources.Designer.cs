@@ -22,14 +22,14 @@ namespace Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class EventResources {
+    public class CommonResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal EventResources() {
+        internal CommonResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Common.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Resources.EventResources", typeof(EventResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Resources.CommonResources", typeof(CommonResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Date.
+        ///   Recherche une chaîne localisée semblable à Editer.
         /// </summary>
-        public static string DateTitle {
+        public static string Edit {
             get {
-                return ResourceManager.GetString("DateTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Nombre de participant.
-        /// </summary>
-        public static string NumberOfParticipantTItle {
-            get {
-                return ResourceManager.GetString("NumberOfParticipantTItle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Resumer.
-        /// </summary>
-        public static string ResumeTitle {
-            get {
-                return ResourceManager.GetString("ResumeTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Seance de l&apos;événement.
-        /// </summary>
-        public static string SeanceListTitle {
-            get {
-                return ResourceManager.GetString("SeanceListTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à test.
-        /// </summary>
-        public static string Test {
-            get {
-                return ResourceManager.GetString("Test", resourceCulture);
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
     }

@@ -12,9 +12,9 @@ namespace DataAccess.DAO
     {
         public EventDao() : base()
         {
-            
+
         }
-        
+
         #region Methods Get
 
         /// <summary>
@@ -104,7 +104,20 @@ namespace DataAccess.DAO
         /// <returns></returns>
         public Event GetEventById(int id)
         {
-            return context.Events.Find(id);
+            // Get Event by his Id, with his :
+            // User creator
+            // Users participants
+            // Users hosts
+            // Seances seances
+            return context.Events.Include(ev => ev.Creator)
+                                 .Include(ev => ev.Hosts)
+                                    .ThenInclude(hs => hs.User)
+                                .Include(ev => ev.Participants)
+                                    .ThenInclude(pr => pr.User)
+                                .Include(ev => ev.Seances)
+                                    .ThenInclude(sc => sc.Seance)
+                                        .ThenInclude(sc => sc.Movie)
+                                .FirstOrDefault(ev => ev.Id == id);
         }
 
         public IEnumerable<Event> GetEventsByMovies(List<string> movies)
@@ -118,13 +131,8 @@ namespace DataAccess.DAO
 
             var events = test.Where(ev => ev.Seances.Any(sc => movies.Any(mv => sc.Seance.Movie.Name.Contains(mv))));
             //var events = this.context.Events.Where(ev => ev.Seances.Any(sc => movies.Contains(sc.Seance.Movie.Name)  ))  6
- 
-            return events;
-        }
 
-        public IEnumerable<Event> GetEventBySeance(IEnumerable<int> scs)
-        {
-            return null;
+            return events;
         }
         #endregion
 
@@ -156,7 +164,7 @@ namespace DataAccess.DAO
         public void DeleteEvent(int id)
         {
             var entity = context.Events.Find(id);
-            if(entity != null)
+            if (entity != null)
                 context.Events.Remove(entity);
         }
         #endregion

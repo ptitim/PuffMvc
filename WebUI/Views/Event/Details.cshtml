@@ -1,0 +1,79 @@
+﻿@using Common.Resources;
+
+@model Service.DTO.EventDto
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>Details</h2>
+<div>
+    <h4>EventDto</h4>
+    <hr />
+
+    <div class="row">
+        <span class="">@EventResources.SeanceListTitle</span>
+        <div class="col-sm-12 seance-container">
+            @foreach (var sc in Model.Seance)
+            {
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img src="@sc.Movie.Image" alt="@(sc.Movie.Name  + " poster")" />
+                        </div>
+                        <div class="col-sm-12 movie-subtitle">
+                            <span>@sc.Movie.Name</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Resume)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resume)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberMaxOfParticipant)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberMaxOfParticipant)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RendezVousPoint)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RendezVousPoint)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfParticipant)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfParticipant)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-controller="Event" asp-route-id="@Model.Id">@CommonResources.Edit</a>
+    <a asp-action="Index">Back to List</a>
+</div>

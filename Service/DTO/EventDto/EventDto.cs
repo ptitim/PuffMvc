@@ -29,11 +29,15 @@ namespace Service.DTO
 
         public bool? IsPublished { get; set; }
 
-        public string IdCreator { get; set; }
+        public string CreatorName { get; set; }
 
         public List<SeanceDto> Seance { get; set; }
 
         public int NumberOfParticipant { get; set; }
+
+        public List<UserDto> Participants { get; set; }
+
+        public List<UserDto> Hosts { get; set; }
 
         #endregion
 
@@ -77,9 +81,20 @@ namespace Service.DTO
             dto.RendezVousPoint = entity.RendezVousPoint;
 
             dto.NumberOfParticipant = entity.Participants.Count;
-            //            dto.IdCreator = entity.IdCreator;
 
-            dto.Seance = SeanceDto.Extract(entity.Seances);
+            dto.CreatorName = entity.Creator.UserName;
+
+            // Get participants
+            if (entity.Participants != null && entity.Participants.Any())
+                dto.Participants = entity.Participants.Select(pr => UserDto.Extract(pr.User)).ToList();
+
+            // Get hosts
+            if (entity.Hosts != null && entity.Hosts.Any())
+                dto.Hosts = entity.Hosts.Select(hs => UserDto.Extract(hs.User)).ToList();
+
+            //dto.Seance = SeanceDto.Extract(entity.Seances);
+            if (entity.Seances != null && entity.Seances.Any())
+                dto.Seance = entity.Seances.Select(sc => SeanceDto.Extract(sc.Seance)).ToList();
 
             return dto;
         }
@@ -112,7 +127,7 @@ namespace Service.DTO
             if (dto.IsPublished.HasValue)
                 entity.IsPublished = dto.IsPublished.Value;
 
-            if (dto.IdCreator != null)
+            if (creator != null && entity.Creator == null)
                 entity.Creator = creator;
 
             if (dto.Seance != null && dto.Seance.Any())

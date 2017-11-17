@@ -1,0 +1,18 @@
+﻿body {
+  font-family: 'Dosis', sans-serif; }
+
+/******** Event  *****/
+.event-title-link {
+  text-decoration: none;
+  color: #6D071A; }
+
+.property-title {
+  font-weight: bold; }
+
+/************* Font **********/
+.font-volkron {
+  font-family: 'Vollkorn SC', serif; }
+
+.font-dosis {
+  font-family: 'Dosis', sans-serif; }
+

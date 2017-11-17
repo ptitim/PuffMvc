@@ -31,7 +31,7 @@ namespace Service
 
             _seanceDao = new SeanceDao();
             _movieDao = new MovieDao();
-                
+
 
         }
 
@@ -110,28 +110,32 @@ namespace Service
             return eventDto;
         }
 
-        public List<EventListDto> GetListEventsByMovies(List<string> movies)
+        /// <summary>
+        /// Get the list of events by movies given
+        /// </summary>
+        /// <param name="moviesName"></param>
+        /// <returns></returns>
+        public List<EventListDto> GetListEventsByMovies(List<string> moviesName)
         {
-            var entities = this._eventDao.GetEventsByMovies(movies);
+            var entities = this._eventDao.GetEventsByMovies(moviesName);
 
-            var moviesIds = this._movieDao.GetMovieIdByTitle(movies);
+            var movies = this._movieDao.GetMoviesByTitles(moviesName);
 
-            var seances = this._seanceDao.GetSeancesByMovies(moviesIds);
-
-
-            var test = new List<Tuple<string, List<Event>>>();
+            var moviesEvents = new List<Tuple<Movie, List<Event>>>();
 
             foreach (var movie in movies)
             {
-                var bloup = entities.Where(en => en.Seances.Any(sc => sc.Seance.Movie.Name.Contains(movie))).ToList();
-                test.Add(Tuple.Create(movie, bloup));
+                // get events with seance of the movie
+                var events = entities.Where(en => en.Seances.Any(sc => sc.Seance.Movie.Id == movie.Id)).ToList();
+                if (events.Any())
+                    moviesEvents.Add(Tuple.Create(movie, events));
             }
 
             List<EventListDto> dtos = new List<EventListDto>();
 
             if (entities != null)
             {
-                foreach(var liste in test)
+                foreach (var liste in moviesEvents)
                 {
                     dtos.Add(EventListDto.Extract(liste.Item2, liste.Item1));
                 }
@@ -139,23 +143,6 @@ namespace Service
 
             return dtos;
         }
-
-        public void fakeEvent()
-        {
-            User user = this._userDao.GetUserByMail("test@test.fr");
-
-            List<int> list = new List<int>() { 1 };
-            Seance sc = this._seanceDao.GetSeancesByMovies(list).FirstOrDefault();
-
-            var ev = new Event();
-            ev.Creator = user;
-            ev.Date = DateTime.UtcNow;
-            ev.IsPublished = true;
-            ev.NbMaxOfParticipant = 0;
-
-
-        }
-
 
         #endregion
 

@@ -29,7 +29,7 @@ namespace WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<IISOptions>(options => options.AuthenticationDisplayName = "test");
+            services.Configure<IISOptions>(options => options.AuthenticationDisplayName = "Puff");
 
             services.AddDbContext<PuffContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

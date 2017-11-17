@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,13 @@ namespace DataAccess.DAO
             listOfId = movies.Select(mv => mv.Id).Distinct().ToList();
 
             return listOfId;
+        }
+
+        public IEnumerable<Movie> GetMoviesByTitles(List<string> list)
+        {
+            var movies = this.context.Movies.Where(mv => list.Any(ls => mv.Name.Contains(ls)));
+
+            return movies;
         }
     }
 }

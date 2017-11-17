@@ -9,18 +9,20 @@ namespace Service.DTO
         public int Id { get; set; }
 
         public string Name { get; private set; }
-        
+
         public DateTime? ReleaseDate { get; private set; }
-        
-        public TimeSpan? TimeLength { get; private set; } 
-        
+
+        public TimeSpan? TimeLength { get; private set; }
+
         public int PG { get; private set; }
-        
+
         public List<FullNameDto> Real { get; private set; }
-        
+
         public List<FullNameDto> Actors { get; private set; }
-        
+
         public string Synopsis { get; private set; }
+
+        public string Image { get; private set; }
 
         #region Methods
 
@@ -42,12 +44,13 @@ namespace Service.DTO
             dto.PG = entity.PG;
             dto.Real = FullNameDto.ParseString(entity.Real);
             dto.Actors = FullNameDto.ParseString(entity.Actors);
+            dto.Image = entity.Image;
 
             dto.Synopsis = entity.Synopsis;
 
             return dto;
         }
-    
+
         /// <summary>
         /// Popualte movie data
         /// Create a new entity if none given
@@ -57,7 +60,7 @@ namespace Service.DTO
         /// <returns></returns>
         public static Movie Populate(MovieDto dto, Movie entity = null)
         {
-            if(entity == null)
+            if (entity == null)
                 entity = new Movie();
 
             entity.Name = dto.Name;

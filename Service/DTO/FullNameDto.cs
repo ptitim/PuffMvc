@@ -27,6 +27,9 @@ namespace Service.DTO
         /// <returns></returns>
         public static List<FullNameDto> ParseString(string raw)
         {
+            if (string.IsNullOrEmpty(raw))
+                return null;
+
             var listNames = raw.Split(';');
 
             return listNames.Select(str => new FullNameDto(str)).ToList();
@@ -43,7 +46,7 @@ namespace Service.DTO
             var str = "";
 
             if (!obj.Any()) return str;
-            
+
             foreach (var name in obj)
             {
                 str += name.FullName;
