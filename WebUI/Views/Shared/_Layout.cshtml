@@ -36,18 +36,15 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home</a>
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>*@
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container">
         @Html.Partial("Header")
 
+    </div>
+    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -75,6 +72,15 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            //var oFCKeditor = new CKe(@Common.Resources.CommonResources.RichTextArea);
+            CKEDITOR.replace(@Common.Resources.CommonResources.RichTextArea);
+            //oFCKeditor.ReplaceTextarea();
+        }
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

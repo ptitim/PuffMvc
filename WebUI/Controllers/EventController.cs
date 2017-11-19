@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service;
+using Microsoft.AspNetCore.Identity;
+using DataAccess.Entity;
+using Service.DTO;
 
 namespace WebUI.Controllers
 {
@@ -12,10 +15,13 @@ namespace WebUI.Controllers
     {
 
         private IEventService eventService;
+        private readonly UserManager<User> userManager;
 
-        public EventController(IEventService evService)
+
+        public EventController(IEventService evService, UserManager<User> userManager)
         {
             eventService = evService;
+            this.userManager = userManager;
         }
 
         // GET: Event
@@ -62,9 +68,14 @@ namespace WebUI.Controllers
         }
 
         // GET: Event/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            var userClaim = this.User;
+            var userId = userManager.GetUserId(userClaim);
+
+            EventDto ev = eventService.GetEventById(id, out Treatment tr);
+
+            return View(ev);
         }
 
         // POST: Event/Edit/5

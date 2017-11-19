@@ -120,8 +120,17 @@
   <data name="DateTitle" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="IsPublishedTitle" xml:space="preserve">
+    <value>Publier l'événement</value>
+  </data>
+  <data name="NumberMaxOfParticipantsTitle" xml:space="preserve">
+    <value>Nombre maximum de participants</value>
+  </data>
   <data name="NumberOfParticipantTItle" xml:space="preserve">
     <value>Nombre de participant</value>
+  </data>
+  <data name="RendezVousPointTitle" xml:space="preserve">
+    <value>Lieux de rendez vous</value>
   </data>
   <data name="ResumeTitle" xml:space="preserve">
     <value>Resumer</value>

@@ -17,6 +17,7 @@ namespace Service.DTO
 
         public string Description { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm}")]
         public DateTime Date { get; set; }
 
         [Display(Name = "ResumeTitle", ResourceType = typeof(Common.Resources.EventResources))]
@@ -25,9 +26,11 @@ namespace Service.DTO
         [Display(Name = "NumberOfParticipantTItle", ResourceType = typeof(Common.Resources.EventResources))]
         public int NumberMaxOfParticipant { get; set; }
 
+        [Display(Name = "RendezVousPointTitle", ResourceType = typeof(Common.Resources.EventResources))]
         public string RendezVousPoint { get; set; }
 
-        public bool? IsPublished { get; set; }
+        [Display(Name = "IsPublishedTitle", ResourceType = typeof(Common.Resources.EventResources))]
+        public bool IsPublished { get; set; }
 
         public string CreatorName { get; set; }
 
@@ -124,8 +127,7 @@ namespace Service.DTO
             if (!string.IsNullOrEmpty(dto.RendezVousPoint))
                 entity.RendezVousPoint = dto.RendezVousPoint;
 
-            if (dto.IsPublished.HasValue)
-                entity.IsPublished = dto.IsPublished.Value;
+            entity.IsPublished = dto.IsPublished;
 
             if (creator != null && entity.Creator == null)
                 entity.Creator = creator;

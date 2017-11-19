@@ -120,4 +120,7 @@
   <data name="Edit" xml:space="preserve">
     <value>Editer</value>
   </data>
+  <data name="RichTextArea" xml:space="preserve">
+    <value>RichTextArea</value>
+  </data>
 </root>

@@ -4,9 +4,9 @@
 @{
     ViewData["Title"] = "Details";
 }
-<h2>Details</h2>
-<div>
-    <h4>EventDto</h4>
+@*<h2>Details</h2>*@
+<div class="row">
+    <h4 class="font-volkron event-title-link" +->EventDto</h4>
     <hr />
 
     <div class="row">
@@ -29,12 +29,6 @@
     </div>
 
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>

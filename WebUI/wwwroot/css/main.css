@@ -1,5 +1,9 @@
 ﻿body {
-  font-family: 'Dosis', sans-serif; }
+  font-family: 'Dosis', sans-serif;
+  background-image: url("https://i0.wp.com/www.meta-mots.fr/wp-content/uploads/2017/06/rideau-2.jpg?resize=1889%2C943&ssl=1"); }
+
+.body-content {
+  background-color: #EEE; }
 
 /******** Event  *****/
 .event-title-link {

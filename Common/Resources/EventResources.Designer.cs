@@ -70,11 +70,38 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Publier l&apos;événement.
+        /// </summary>
+        public static string IsPublishedTitle {
+            get {
+                return ResourceManager.GetString("IsPublishedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nombre maximum de participants.
+        /// </summary>
+        public static string NumberMaxOfParticipantsTitle {
+            get {
+                return ResourceManager.GetString("NumberMaxOfParticipantsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nombre de participant.
         /// </summary>
         public static string NumberOfParticipantTItle {
             get {
                 return ResourceManager.GetString("NumberOfParticipantTItle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lieux de rendez vous.
+        /// </summary>
+        public static string RendezVousPointTitle {
+            get {
+                return ResourceManager.GetString("RendezVousPointTitle", resourceCulture);
             }
         }
         

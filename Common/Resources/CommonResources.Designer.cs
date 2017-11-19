@@ -68,5 +68,14 @@ namespace Common.Resources {
                 return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à RichTextArea.
+        /// </summary>
+        public static string RichTextArea {
+            get {
+                return ResourceManager.GetString("RichTextArea", resourceCulture);
+            }
+        }
     }
 }
