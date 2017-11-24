@@ -62,5 +62,31 @@
         }
     </div>
 
-    @*@Html.DisplayFor(model => eventLine)*@
+    <div class="row row-separator">
+
+    </div>
+
+        <div class="row">
+            <div class="col-sm-12 margin-center">
+                <form class="row" method="post" asp-controller="Event" asp-action="search">
+                    <div class="col-sm-offset-2 col-sm-7">
+                        <input class="form-control" type="text" name="search" value="" />
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="btn btn-default" type="submit">Chercher un évènements</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-default" asp-controller="Event" asp-action="Event">Crée un évènement </a>
+            </div>
+        </div>
+
+
+
+
+        @*@Html.DisplayFor(model => eventLine)*@
 }

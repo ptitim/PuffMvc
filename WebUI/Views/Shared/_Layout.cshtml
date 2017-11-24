@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link href="~/css/main.css" rel="stylesheet" />
+        <link href="~/css/header.css" rel="stylesheet" />
     </environment>
 
     <environment exclude="Development">
@@ -77,7 +78,7 @@
     <script type="text/javascript">
         window.onload = function () {
             //var oFCKeditor = new CKe(@Common.Resources.CommonResources.RichTextArea);
-            CKEDITOR.replace(@Common.Resources.CommonResources.RichTextArea);
+            CKEDITOR.replace("@Common.Resources.CommonResources.RichTextArea");
             //oFCKeditor.ReplaceTextarea();
         }
     </script>

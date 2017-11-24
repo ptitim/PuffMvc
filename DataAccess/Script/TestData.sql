@@ -37,7 +37,7 @@ SET IDENTITY_INSERT [Movies] ON
 MERGE INTO [Movies] AS TARGET
 USING (VALUES
 	(1, 'Thor : Ragnarok', 0, 'Taika waititi', '2017/10/17', CAST ('02:10:00' AS TIME(7))),
-	(2, 'Carbonne', 0, 'Olivier Marchal', '2017/18/19', CAST( '01:44:00' AS TIME(7) )),
+	(2, 'Carbonne', 0, 'Olivier Marchal', '2017/18/19', CAST( '01:44:00' AS TIME(7))),
 	(3, 'Geostorm', 0, 'Dean Delvin', '2017/10/11', CAST( '01:47:00' AS TIME(7)))
 	)
 AS Source ([Id], [Name], [PG], [Real], [ReleaseDate], [TimeLength])

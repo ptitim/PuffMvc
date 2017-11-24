@@ -83,9 +83,11 @@ namespace Service.DTO
             dto.NumberMaxOfParticipant = entity.NbMaxOfParticipant;
             dto.RendezVousPoint = entity.RendezVousPoint;
 
-            dto.NumberOfParticipant = entity.Participants.Count;
+            if(entity.Participants != null)
+                dto.NumberOfParticipant = entity.Participants.Count;
 
-            dto.CreatorName = entity.Creator.UserName;
+            if(entity.Creator != null)
+                dto.CreatorName = entity.Creator.UserName;
 
             // Get participants
             if (entity.Participants != null && entity.Participants.Any())

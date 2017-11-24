@@ -3,13 +3,28 @@
 
 body {
     font-family: 'Dosis', sans-serif;
-    background-image: url("https://i0.wp.com/www.meta-mots.fr/wp-content/uploads/2017/06/rideau-2.jpg?resize=1889%2C943&ssl=1");
+    /*background-image: url("https://i0.wp.com/www.meta-mots.fr/wp-content/uploads/2017/06/rideau-2.jpg?resize=1889%2C943&ssl=1");*/
 }
 
 .body-content{
     background-color: #EEE;
 
 }
+
+
+.row-separator{
+    height: 2px;
+    margin: 1em 3em;
+    background-color: $main-color-red;
+    border-radius: 5px;
+    box-shadow: 0px -1px 2px 0px $red-light-shadow;
+}
+
+.margin-center{
+    margin-right: auto;
+    margin-left: auto;
+}
+
 /******** Event  *****/
 .event-title-link {
     text-decoration: none;
@@ -19,6 +34,8 @@ body {
 .property-title{
     font-weight: bold;
 }
+
+
 /************* Font **********/
 .font-volkron {
     font-family: 'Vollkorn SC', serif;
