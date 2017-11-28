@@ -55,6 +55,8 @@ namespace WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            var user = userManager.GetUserId(User);
+
             try
             {
                 // TODO: Add insert logic here

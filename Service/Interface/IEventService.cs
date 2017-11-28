@@ -40,7 +40,7 @@ namespace Service
         ///     "events : List<eventDto>
         /// }
         /// </returns>
-        List<EventListDto> GetListEventsByMovies(List<string> movies);
+        List<EventListDto> GetListEventsByMovies(List<string> movies, int maxPerLine);
 
         #endregion
 

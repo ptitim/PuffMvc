@@ -114,8 +114,9 @@ namespace Service
         /// Get the list of events by movies given
         /// </summary>
         /// <param name="moviesName"></param>
+        /// <param name="maxPerLine">maximum number of event per line</param>
         /// <returns></returns>
-        public List<EventListDto> GetListEventsByMovies(List<string> moviesName)
+        public List<EventListDto> GetListEventsByMovies(List<string> moviesName, int maxPerLine)
         {
             var entities = this._eventDao.GetEventsByMovies(moviesName);
 
@@ -126,7 +127,7 @@ namespace Service
             foreach (var movie in movies)
             {
                 // get events with seance of the movie
-                var events = entities.Where(en => en.Seances.Any(sc => sc.Seance.Movie.Id == movie.Id)).ToList();
+                var events = entities.Where(en => en.Seances.Any(sc => sc.Seance.Movie.Id == movie.Id)).Take(maxPerLine).ToList();
                 if (events.Any())
                     moviesEvents.Add(Tuple.Create(movie, events));
             }
